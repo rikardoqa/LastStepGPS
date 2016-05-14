@@ -1,0 +1,25 @@
+%h1 Listing favoritos
+
+%table
+  %thead
+    %tr
+      %th Nomelocal
+      %th Posicionamento
+      %th Usuario
+      %th
+      %th
+      %th
+
+  %tbody
+    - @favoritos.each do |favorito|
+      %tr
+        %td= favorito.nomeLocal
+        %td= favorito.posicionamento
+        %td= favorito.usuario
+        %td= link_to 'Show', favorito
+        %td= link_to 'Edit', edit_favorito_path(favorito)
+        %td= link_to 'Destroy', favorito, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Favorito', new_favorito_path

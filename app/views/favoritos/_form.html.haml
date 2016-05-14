@@ -1,0 +1,10 @@
+= simple_form_for(@favorito) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nomeLocal
+    = f.association :posicionamento
+    = f.association :usuario
+
+  .form-actions
+    = f.button :submit
