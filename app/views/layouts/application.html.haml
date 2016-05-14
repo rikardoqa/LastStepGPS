@@ -1,0 +1,17 @@
+%html
+	%head
+		%meta{:charset => "utf-8"}
+		%title= yield(:title)
+		= stylesheet_link_tag "application"
+		= javascript_include_tag "application"
+	%body
+		%div{ :class => "shadow" }
+			%div{ :class => "tuuudo" }
+
+				%header{ :class => "header" }
+					= render 'layouts/header'
+				
+				%main{ :class => "main", :role =>"main"}
+					= yield
+					%footer{ :class => "foot" }
+						= render 'layouts/footer'
