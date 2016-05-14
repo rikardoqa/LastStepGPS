@@ -1,0 +1,11 @@
+= simple_form_for(@posicionamento) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :posicao
+    = f.input :data
+    = f.input :horario
+    = f.association :usuario
+
+  .form-actions
+    = f.button :submit

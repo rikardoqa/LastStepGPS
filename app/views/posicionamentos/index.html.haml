@@ -1,0 +1,27 @@
+%h1 Listing posicionamentos
+
+%table
+  %thead
+    %tr
+      %th Posicao
+      %th Data
+      %th Horario
+      %th Usuario
+      %th
+      %th
+      %th
+
+  %tbody
+    - @posicionamentos.each do |posicionamento|
+      %tr
+        %td= posicionamento.posicao
+        %td= posicionamento.data
+        %td= posicionamento.horario
+        %td= posicionamento.usuario
+        %td= link_to 'Show', posicionamento
+        %td= link_to 'Edit', edit_posicionamento_path(posicionamento)
+        %td= link_to 'Destroy', posicionamento, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Posicionamento', new_posicionamento_path

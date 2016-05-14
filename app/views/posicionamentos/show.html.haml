@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Posicao:
+  = @posicionamento.posicao
+%p
+  %b Data:
+  = @posicionamento.data
+%p
+  %b Horario:
+  = @posicionamento.horario
+%p
+  %b Usuario:
+  = @posicionamento.usuario
+
+= link_to 'Edit', edit_posicionamento_path(@posicionamento)
+\|
+= link_to 'Back', posicionamentos_path
