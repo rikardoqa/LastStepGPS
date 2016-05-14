@@ -275,3 +275,40 @@ Processing by PosicionamentosController#index as HTML
   Rendered layouts/_header.html.erb (0.4ms)
   Rendered layouts/_footer.html.erb (0.0ms)
 Completed 200 OK in 66ms (Views: 58.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-14 19:11:46 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsuariosController#index as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered usuarios/index.html.haml within layouts/application (22.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 389ms (Views: 374.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-14 19:11:50 -0300
+Processing by UsuariosController#index as HTML
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered usuarios/index.html.haml within layouts/application (10.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 53ms (Views: 52.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-14 19:11:52 -0300
+Processing by UsuariosController#index as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered usuarios/index.html.haml within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-14 19:11:54 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (589.3ms)
+  Rendered usuarios/new.html.haml within layouts/application (594.0ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 631ms (Views: 617.9ms | ActiveRecord: 0.3ms)

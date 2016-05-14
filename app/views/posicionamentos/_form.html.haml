@@ -5,7 +5,7 @@
     = f.input :posicao
     = f.input :data
     = f.input :horario
-    = f.association :usuario
+    = f.association :usuario, label_method: :login
 
   .form-actions
-    = f.button :submit
+    = f.submit "Salvar"
