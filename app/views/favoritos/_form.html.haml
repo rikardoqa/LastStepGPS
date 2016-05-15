@@ -3,8 +3,8 @@
 
   .form-inputs
     = f.input :nomeLocal
-    = f.association :posicionamento
-    = f.association :usuario
+    = f.association :posicionamento, label_method: :posicao
+    = f.association :usuario, label_method: :login
 
   .form-actions
-    = f.button :submit
+    = f.submit 'Salvar'

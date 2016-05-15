@@ -4,14 +4,12 @@ require 'spec_helper'
 feature 'Favorito' do
 
 	scenario 'Incluir favorito' do
-		criar_usuario
 		criar_posicionamento
 		visit new_favorito_path
 		preencher_verificar_favorito
 	end
 
 	scenario 'Alterar favorito' do
-		criar_usuario
 		criar_posicionamento
 		favorito = FactoryGirl.create(:favorito)
 		visit edit_favorito_path(favorito)
@@ -23,7 +21,6 @@ feature 'Favorito' do
 		visit favoritos_path
 		click_link 'Excluir'
 	end	
-
 
 	def criar_usuario
 		visit new_usuario_path
@@ -46,6 +43,7 @@ feature 'Favorito' do
 	end
 
 	def criar_posicionamento
+		criar_usuario
 		visit new_posicionamento_path
 		preencher_verificar_posicionamento
 	end
@@ -53,7 +51,7 @@ feature 'Favorito' do
 		fill_in 'Posicao', :with => '101010'
 		fill_in 'Horario', :with => '10:10'
 		fill_in 'Data', :with => '10/10/2016'
-		select 'Ricardo', :from => 'Usuario'
+		select "Ricardo", from: 'Usuario'
 		click_button 'Salvar'
 		expect(page).to have_content 'Posicao: 101010'
 		expect(page).to have_content 'Horario: 10:10'
@@ -62,8 +60,8 @@ feature 'Favorito' do
 
 	def preencher_verificar_favorito
 		fill_in 'Nomelocal', :with => 'IFF'
-		select 'Ricardo', :from => 'Usuario'
-		select '101010', :from => 'Posicao'
+		select "101010", from: 'Posicionamento'
+		select "Ricardo", from: 'Usuario'
 		click_button 'Salvar'
 		expect(page).to have_content 'Nomelocal: IFF'
 	end

@@ -48,11 +48,12 @@ feature 'Posicionamento' do
 		fill_in 'Posicao', :with => '101010'
 		fill_in 'Horario', :with => '10:10'
 		fill_in 'Data', :with => '10/10/2016'
-		select 'Ricardo', :from => 'Usuario'
+		select 'Ricardo', from: 'Usuario'
 		click_button 'Salvar'
 		expect(page).to have_content 'Posicao: 101010'
 		expect(page).to have_content 'Horario: 10:10'
 		expect(page).to have_content 'Data: 10/10/2016'
+
 	end
 
 end		
