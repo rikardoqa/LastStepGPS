@@ -22,10 +22,10 @@
         %td= usuario.email
         %td= usuario.numero
         %td= usuario.status
-        %td= link_to 'Show', usuario
-        %td= link_to 'Edit', edit_usuario_path(usuario)
-        %td= link_to 'Excluir', usuario, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', usuario, :class => 'see'
+        %td= link_to 'Edit', edit_usuario_path(usuario), :class => 'see'
+        %td= link_to 'Excluir', usuario, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'see'
 
 %br
 
-= link_to 'New Usuario', new_usuario_path
+= link_to 'New Usuario', new_usuario_path, :class => 'linksnew'

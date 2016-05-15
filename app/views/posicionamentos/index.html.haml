@@ -17,11 +17,11 @@
         %td= posicionamento.posicao
         %td= posicionamento.data
         %td= posicionamento.horario
-        %td= posicionamento.usuario
-        %td= link_to 'Show', posicionamento
-        %td= link_to 'Edit', edit_posicionamento_path(posicionamento)
-        %td= link_to 'Excluir', posicionamento, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= posicionamento.usuario.login if !posicionamento.usuario.nil?
+        %td= link_to 'Show', posicionamento, :class => 'see'
+        %td= link_to 'Edit', edit_posicionamento_path(posicionamento), :class => 'see'
+        %td= link_to 'Excluir', posicionamento, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'see'
 
 %br
 
-= link_to 'New Posicionamento', new_posicionamento_path
+= link_to 'New Posicionamento', new_posicionamento_path, :class => 'linksnew'

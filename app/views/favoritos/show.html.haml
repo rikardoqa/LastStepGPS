@@ -5,10 +5,10 @@
   = @favorito.nomeLocal
 %p
   %b Posicionamento:
-  = @favorito.posicionamento
+  = @favorito.posicionamento.posicao
 %p
   %b Usuario:
-  = @favorito.usuario
+  = @favorito.usuario.login
 
 = link_to 'Edit', edit_favorito_path(@favorito)
 \|
