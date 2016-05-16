@@ -1,7 +1,7 @@
 %p#notice= notice
 
 %p
-  %b Nomelocal:
+  %b Local:
   = @favorito.nomeLocal
 %p
   %b Posicionamento:
@@ -10,6 +10,6 @@
   %b Usuario:
   = @favorito.usuario.login
 
-= link_to 'Edit', edit_favorito_path(@favorito)
+= link_to 'Edit', edit_favorito_path(@favorito), :class => 'see'
 \|
-= link_to 'Back', favoritos_path
+= link_to 'Back', favoritos_path, :class => 'see'
