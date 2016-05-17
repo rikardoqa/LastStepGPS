@@ -107,6 +107,29 @@ td{ border: 0px solid #00d0d0;
 		  
 }
 
+.main input[type=text]{
+	padding: 3px 3px;
+	margin: 5px 10px;
+	box-sizing: border-box;
+	border: 2px solid #00d0d0;
+	border-radius: 10px;
+}
+
+.main input[type=email]{
+	padding: 3px 3px;
+	margin: 5px 10px;
+	box-sizing: border-box;
+	border: 2px solid #00d0d0;
+	border-radius: 10px;
+}
+
+.main select{
+	padding: 3px 3px;
+	margin: 5px 10px;
+	box-sizing: border-box;
+	border: 2px solid #00d0d0;
+	border-radius: 3px;
+}
 
 footer{
 	width:100%;

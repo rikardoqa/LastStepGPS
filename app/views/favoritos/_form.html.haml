@@ -2,9 +2,10 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :nomeLocal
+    = f.input :nomeLocal, :label => 'Local' 
     = f.association :posicionamento, label_method: :posicao
     = f.association :usuario, label_method: :login
-
+    
   .form-actions
     = f.submit 'Salvar', :class => 'see'
+%br
