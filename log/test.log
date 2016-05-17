@@ -6024,3 +6024,1665 @@ Processing by FavoritosController#show as HTML
   Rendered layouts/_footer.html.erb (0.0ms)
 Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
   [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.7ms)[0m  DELETE FROM "favoritos";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'favoritos';
+  [1m[36m (10.0ms)[0m  [1mDELETE FROM "posicionamentos";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posicionamentos';[0m
+  [1m[35m (2.0ms)[0m  DELETE FROM "usuarios";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'usuarios';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:35:22 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (605.2ms)
+  Rendered usuarios/new.html.haml within layouts/application (611.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1037ms (Views: 1012.9ms | ActiveRecord: 0.4ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:35:23.143378"], ["updated_at", "2016-05-17 00:35:23.143378"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (3.2ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:35:23.196079"], ["updated_at", "2016-05-17 00:35:23.196079"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posicionamentos/1/edit" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.2ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (14.5ms)
+  Rendered posicionamentos/edit.html.haml within layouts/application (16.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 25ms (Views: 23.0ms | ActiveRecord: 0.4ms)
+Started PATCH "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#update as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "posicionamentos" SET "posicao" = ?, "data" = ?, "horario" = ?, "usuario_id" = ?, "updated_at" = ? WHERE "posicionamentos"."id" = ?[0m  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["updated_at", "2016-05-17 00:35:23.241345"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (7.3ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.8ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:35:23.290235"], ["updated_at", "2016-05-17 00:35:23.290235"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered posicionamentos/_form.html.haml (7.1ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (8.6ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.2ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:35:23.335860"], ["updated_at", "2016-05-17 00:35:23.335860"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:35:23.353521"], ["updated_at", "2016-05-17 00:35:23.353521"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  Rendered posicionamentos/index.html.haml within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.2ms)
+Started DELETE "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "posicionamentos" WHERE "posicionamentos"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT "posicionamentos".* FROM "posicionamentos"[0m
+  Rendered posicionamentos/index.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (9.4ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.8ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 12.3ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:35:23.409357"], ["updated_at", "2016-05-17 00:35:23.409357"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.3ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (7.0ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (7.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.3ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:35:23.453118"], ["updated_at", "2016-05-17 00:35:23.453118"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:35:23.479146"], ["updated_at", "2016-05-17 00:35:23.479146"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/favoritos/1/edit" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by FavoritosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.2ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (8.3ms)
+  Rendered favoritos/edit.html.haml within layouts/application (10.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.3ms)
+  Rendered usuarios/new.html.haml within layouts/application (8.7ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:35:23.539484"], ["updated_at", "2016-05-17 00:35:23.539484"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (7.4ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (7.8ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.2ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:35:23.585370"], ["updated_at", "2016-05-17 00:35:23.585370"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.6ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+Started GET "/favoritos/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by FavoritosController#new as HTML
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (6.8ms)
+  Rendered favoritos/new.html.haml within layouts/application (8.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:35:23.622257"], ["updated_at", "2016-05-17 00:35:23.622257"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by FavoritosController#index as HTML
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT "favoritos".* FROM "favoritos"[0m
+  Rendered favoritos/index.html.haml within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.1ms)
+Started DELETE "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by FavoritosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "favoritos" WHERE "favoritos"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/favoritos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by FavoritosController#index as HTML
+  [1m[35mFavorito Load (0.2ms)[0m  SELECT "favoritos".* FROM "favoritos"
+  Rendered favoritos/index.html.haml within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:35:23.650377"], ["updated_at", "2016-05-17 00:35:23.650377"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/usuarios/1/edit" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/_form.html.haml (9.3ms)
+  Rendered usuarios/edit.html.haml within layouts/application (11.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.1ms)
+Started PATCH "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#update as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "usuarios" SET "login" = ?, "senha" = ?, "nome" = ?, "email" = ?, "numero" = ?, "status" = ?, "updated_at" = ? WHERE "usuarios"."id" = ?[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["updated_at", "2016-05-17 00:35:23.683328"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (9.6ms)
+  Rendered usuarios/new.html.haml within layouts/application (10.0ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 12.3ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:35:23.730626"], ["updated_at", "2016-05-17 00:35:23.730626"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:35:23.781443"], ["updated_at", "2016-05-17 00:35:23.781443"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#index as HTML
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered usuarios/index.html.haml within layouts/application (6.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.2ms)
+Started DELETE "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "usuarios" WHERE "usuarios"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:35:23 -0300
+Processing by UsuariosController#index as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered usuarios/index.html.haml within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.9ms)[0m  DELETE FROM "favoritos";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'favoritos';
+  [1m[36m (2.4ms)[0m  [1mDELETE FROM "posicionamentos";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posicionamentos';[0m
+  [1m[35m (2.3ms)[0m  DELETE FROM "usuarios";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'usuarios';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:36:57 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (612.6ms)
+  Rendered usuarios/new.html.haml within layouts/application (618.9ms)
+  Rendered layouts/_header.html.erb (3.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 897ms (Views: 873.8ms | ActiveRecord: 0.5ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:36:58.498407"], ["updated_at", "2016-05-17 00:36:58.498407"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (3.2ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 6.3ms | ActiveRecord: 0.2ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (17.5ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (19.4ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 37ms (Views: 26.1ms | ActiveRecord: 0.4ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:36:58.589111"], ["updated_at", "2016-05-17 00:36:58.589111"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (12.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.2ms)
+Started GET "/favoritos/new" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by FavoritosController#new as HTML
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (17.5ms)
+  Rendered favoritos/new.html.haml within layouts/application (19.4ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 34ms (Views: 26.1ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.8ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:36:58.689543"], ["updated_at", "2016-05-17 00:36:58.689543"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (6.9ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (7.4ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.2ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:36:58.731855"], ["updated_at", "2016-05-17 00:36:58.731855"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:36:58.748269"], ["updated_at", "2016-05-17 00:36:58.748269"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/favoritos/1/edit" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by FavoritosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.2ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (5.9ms)
+  Rendered favoritos/edit.html.haml within layouts/application (7.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:36:58.770377"], ["updated_at", "2016-05-17 00:36:58.770377"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by FavoritosController#index as HTML
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT "favoritos".* FROM "favoritos"[0m
+  Rendered favoritos/index.html.haml within layouts/application (3.8ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.1ms)
+Started DELETE "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by FavoritosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "favoritos" WHERE "favoritos"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/favoritos
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by FavoritosController#index as HTML
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT "favoritos".* FROM "favoritos"
+  Rendered favoritos/index.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.1ms)
+  Rendered usuarios/new.html.haml within layouts/application (8.7ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:36:58.823143"], ["updated_at", "2016-05-17 00:36:58.823143"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered posicionamentos/_form.html.haml (7.7ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (8.1ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.2ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:36:58.866015"], ["updated_at", "2016-05-17 00:36:58.866015"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.0ms)
+  Rendered usuarios/new.html.haml within layouts/application (8.4ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:36:58.908800"], ["updated_at", "2016-05-17 00:36:58.908800"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:36:58.928925"], ["updated_at", "2016-05-17 00:36:58.928925"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posicionamentos/1/edit" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered posicionamentos/_form.html.haml (6.8ms)
+  Rendered posicionamentos/edit.html.haml within layouts/application (8.3ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.3ms)
+Started PATCH "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#update as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "posicionamentos" SET "posicao" = ?, "data" = ?, "horario" = ?, "usuario_id" = ?, "updated_at" = ? WHERE "posicionamentos"."id" = ?  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["updated_at", "2016-05-17 00:36:58.957585"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:36:58.975474"], ["updated_at", "2016-05-17 00:36:58.975474"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[36mPosicionamento Load (0.2ms)[0m  [1mSELECT "posicionamentos".* FROM "posicionamentos"[0m
+  Rendered posicionamentos/index.html.haml within layouts/application (4.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.2ms)
+Started DELETE "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "posicionamentos" WHERE "posicionamentos"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:36:58 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  Rendered posicionamentos/index.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (7.9ms)
+  Rendered usuarios/new.html.haml within layouts/application (8.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:36:59.028238"], ["updated_at", "2016-05-17 00:36:59.028238"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:36:59.051025"], ["updated_at", "2016-05-17 00:36:59.051025"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/usuarios/1/edit" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/_form.html.haml (9.3ms)
+  Rendered usuarios/edit.html.haml within layouts/application (11.0ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.1ms)
+Started PATCH "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#update as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "usuarios" SET "login" = ?, "senha" = ?, "nome" = ?, "email" = ?, "numero" = ?, "status" = ?, "updated_at" = ? WHERE "usuarios"."id" = ?[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["updated_at", "2016-05-17 00:36:59.082809"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:36:59.133273"], ["updated_at", "2016-05-17 00:36:59.133273"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#index as HTML
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered usuarios/index.html.haml within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.8ms | ActiveRecord: 0.2ms)
+Started DELETE "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "usuarios" WHERE "usuarios"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:36:59 -0300
+Processing by UsuariosController#index as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered usuarios/index.html.haml within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (4.2ms)[0m  DELETE FROM "favoritos";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'favoritos';
+  [1m[36m (2.6ms)[0m  [1mDELETE FROM "posicionamentos";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posicionamentos';[0m
+  [1m[35m (2.2ms)[0m  DELETE FROM "usuarios";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'usuarios';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:37:51 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (609.2ms)
+  Rendered usuarios/new.html.haml within layouts/application (615.5ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 883ms (Views: 859.3ms | ActiveRecord: 0.4ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:37:52.216618"], ["updated_at", "2016-05-17 00:37:52.216618"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 6.0ms | ActiveRecord: 0.2ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (17.4ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (19.4ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 26.1ms | ActiveRecord: 0.5ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:37:52.306548"], ["updated_at", "2016-05-17 00:37:52.306548"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (12.4ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.3ms)
+Started GET "/favoritos/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#new as HTML
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (15.7ms)
+  Rendered favoritos/new.html.haml within layouts/application (17.6ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 32ms (Views: 23.7ms | ActiveRecord: 0.5ms)
+Started POST "/favoritos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#create as HTML
+  Parameters: {"utf8"=>"✓", "favorito"=>{"nomeLocal"=>"IFF", "posicionamento_id"=>"1", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "posicionamento_id", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["nomeLocal", "IFF"], ["posicionamento_id", 1], ["usuario_id", 1], ["created_at", "2016-05-17 00:37:52.383426"], ["updated_at", "2016-05-17 00:37:52.383426"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/favoritos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+Started GET "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.2ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered favoritos/show.html.haml within layouts/application (5.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.8ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:37:52.429601"], ["updated_at", "2016-05-17 00:37:52.429601"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 6ms (ActiveRecord: 0.9ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (6.6ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (7.0ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.2ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:37:52.471867"], ["updated_at", "2016-05-17 00:37:52.471867"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (2.0ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:37:52.489078"], ["updated_at", "2016-05-17 00:37:52.489078"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/favoritos/1/edit" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (6.4ms)
+  Rendered favoritos/edit.html.haml within layouts/application (8.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.4ms)
+Started PATCH "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#update as HTML
+  Parameters: {"utf8"=>"✓", "favorito"=>{"nomeLocal"=>"IFF", "posicionamento_id"=>"1", "usuario_id"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "favoritos" SET "nomeLocal" = ?, "posicionamento_id" = ?, "usuario_id" = ?, "updated_at" = ? WHERE "favoritos"."id" = ?  [["nomeLocal", "IFF"], ["posicionamento_id", 1], ["usuario_id", 1], ["updated_at", "2016-05-17 00:37:52.516943"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/favoritos/1
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered favoritos/show.html.haml within layouts/application (2.0ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:37:52.533665"], ["updated_at", "2016-05-17 00:37:52.533665"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#index as HTML
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT "favoritos".* FROM "favoritos"
+  Rendered favoritos/index.html.haml within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.1ms)
+Started DELETE "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "favoritos" WHERE "favoritos"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/favoritos
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by FavoritosController#index as HTML
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT "favoritos".* FROM "favoritos"[0m
+  Rendered favoritos/index.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.3ms)
+  Rendered usuarios/new.html.haml within layouts/application (8.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:37:52.587687"], ["updated_at", "2016-05-17 00:37:52.587687"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (7.0ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (7.4ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.2ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:37:52.634894"], ["updated_at", "2016-05-17 00:37:52.634894"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.6ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:37:52.677613"], ["updated_at", "2016-05-17 00:37:52.677613"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:37:52.697836"], ["updated_at", "2016-05-17 00:37:52.697836"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posicionamentos/1/edit" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (7.5ms)
+  Rendered posicionamentos/edit.html.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+Started PATCH "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#update as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "posicionamentos" SET "posicao" = ?, "data" = ?, "horario" = ?, "usuario_id" = ?, "updated_at" = ? WHERE "posicionamentos"."id" = ?[0m  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["updated_at", "2016-05-17 00:37:52.726359"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:37:52.743746"], ["updated_at", "2016-05-17 00:37:52.743746"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  Rendered posicionamentos/index.html.haml within layouts/application (4.4ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.2ms)
+Started DELETE "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "posicionamentos" WHERE "posicionamentos"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT "posicionamentos".* FROM "posicionamentos"[0m
+  Rendered posicionamentos/index.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.7ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:37:52.797694"], ["updated_at", "2016-05-17 00:37:52.797694"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:37:52.852971"], ["updated_at", "2016-05-17 00:37:52.852971"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/usuarios/1/edit" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/_form.html.haml (10.9ms)
+  Rendered usuarios/edit.html.haml within layouts/application (12.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.1ms)
+Started PATCH "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#update as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "usuarios" SET "login" = ?, "senha" = ?, "nome" = ?, "email" = ?, "numero" = ?, "status" = ?, "updated_at" = ? WHERE "usuarios"."id" = ?  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["updated_at", "2016-05-17 00:37:52.891147"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:37:52.918623"], ["updated_at", "2016-05-17 00:37:52.918623"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#index as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered usuarios/index.html.haml within layouts/application (7.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.2ms)
+Started DELETE "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "usuarios" WHERE "usuarios"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:37:52 -0300
+Processing by UsuariosController#index as HTML
+  [1m[36mUsuario Load (0.3ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered usuarios/index.html.haml within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (20.7ms)[0m  DELETE FROM "favoritos";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'favoritos';
+  [1m[36m (2.4ms)[0m  [1mDELETE FROM "posicionamentos";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posicionamentos';[0m
+  [1m[35m (2.3ms)[0m  DELETE FROM "usuarios";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'usuarios';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:39:11 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (609.9ms)
+  Rendered usuarios/new.html.haml within layouts/application (616.1ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 885ms (Views: 862.2ms | ActiveRecord: 0.5ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:39:12 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:39:12.880388"], ["updated_at", "2016-05-17 00:39:12.880388"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:12 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (3.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 16ms (Views: 6.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:39:12.934555"], ["updated_at", "2016-05-17 00:39:12.934555"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posicionamentos/1/edit" for 127.0.0.1 at 2016-05-16 21:39:12 -0300
+Processing by PosicionamentosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.2ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (14.6ms)
+  Rendered posicionamentos/edit.html.haml within layouts/application (16.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.4ms)
+Started PATCH "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:39:12 -0300
+Processing by PosicionamentosController#update as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "posicionamentos" SET "posicao" = ?, "data" = ?, "horario" = ?, "usuario_id" = ?, "updated_at" = ? WHERE "posicionamentos"."id" = ?[0m  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["updated_at", "2016-05-17 00:39:12.981251"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:39:12 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (7.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["posicao", "MyString"], ["data", "MyString"], ["horario", "MyString"], ["created_at", "2016-05-17 00:39:13.006755"], ["updated_at", "2016-05-17 00:39:13.006755"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  Rendered posicionamentos/index.html.haml within layouts/application (4.5ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.2ms)
+Started DELETE "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "posicionamentos" WHERE "posicionamentos"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posicionamentos
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#index as HTML
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT "posicionamentos".* FROM "posicionamentos"[0m
+  Rendered posicionamentos/index.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.7ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:39:13.066169"], ["updated_at", "2016-05-17 00:39:13.066169"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.3ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (7.2ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (8.7ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.3ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:39:13.109811"], ["updated_at", "2016-05-17 00:39:13.109811"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:39:13.128353"], ["updated_at", "2016-05-17 00:39:13.128353"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/usuarios/1/edit" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/_form.html.haml (8.7ms)
+  Rendered usuarios/edit.html.haml within layouts/application (12.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.1ms)
+Started PATCH "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#update as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "usuarios" SET "login" = ?, "senha" = ?, "nome" = ?, "email" = ?, "numero" = ?, "status" = ?, "updated_at" = ? WHERE "usuarios"."id" = ?  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["updated_at", "2016-05-17 00:39:13.161713"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login", "MyString"], ["senha", "MyString"], ["nome", "MyString"], ["email", "MyString"], ["numero", "MyString"], ["status", "f"], ["created_at", "2016-05-17 00:39:13.182857"], ["updated_at", "2016-05-17 00:39:13.182857"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#index as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered usuarios/index.html.haml within layouts/application (5.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.8ms | ActiveRecord: 0.2ms)
+Started DELETE "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "usuarios" WHERE "usuarios"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/usuarios" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#index as HTML
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered usuarios/index.html.haml within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.5ms)
+  Rendered usuarios/new.html.haml within layouts/application (9.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:39:13.236828"], ["updated_at", "2016-05-17 00:39:13.236828"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.4ms)
+  Rendered usuarios/new.html.haml within layouts/application (8.8ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:39:13.284110"], ["updated_at", "2016-05-17 00:39:13.284110"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.2ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.3ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (6.9ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (7.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.3ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:39:13.325101"], ["updated_at", "2016-05-17 00:39:13.325101"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:39:13.351433"], ["updated_at", "2016-05-17 00:39:13.351433"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/favoritos/1/edit" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.2ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (8.1ms)
+  Rendered favoritos/edit.html.haml within layouts/application (10.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 0.5ms)
+Started PATCH "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#update as HTML
+  Parameters: {"utf8"=>"✓", "favorito"=>{"nomeLocal"=>"IFF", "posicionamento_id"=>"1", "usuario_id"=>"1"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "favoritos" SET "nomeLocal" = ?, "posicionamento_id" = ?, "usuario_id" = ?, "updated_at" = ? WHERE "favoritos"."id" = ?  [["nomeLocal", "IFF"], ["posicionamento_id", 1], ["usuario_id", 1], ["updated_at", "2016-05-17 00:39:13.389930"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/favoritos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFavorito Load (0.1ms)[0m  SELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPosicionamento Load (0.1ms)[0m  [1mSELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered favoritos/show.html.haml within layouts/application (5.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "favoritos" ("nomeLocal", "created_at", "updated_at") VALUES (?, ?, ?)  [["nomeLocal", "MyString"], ["created_at", "2016-05-17 00:39:13.410293"], ["updated_at", "2016-05-17 00:39:13.410293"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#index as HTML
+  [1m[35mFavorito Load (0.2ms)[0m  SELECT "favoritos".* FROM "favoritos"
+  Rendered favoritos/index.html.haml within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+Started DELETE "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "favoritos" WHERE "favoritos"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/favoritos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/favoritos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#index as HTML
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT "favoritos".* FROM "favoritos"[0m
+  Rendered favoritos/index.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/usuarios/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#new as HTML
+  Rendered usuarios/_form.html.haml (8.4ms)
+  Rendered usuarios/new.html.haml within layouts/application (8.9ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+Started POST "/usuarios" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#create as HTML
+  Parameters: {"utf8"=>"✓", "usuario"=>{"login"=>"Ricardo", "senha"=>"Ricardo", "nome"=>"Ricardo", "email"=>"Ricardo", "numero"=>"998989898", "status"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "usuarios" ("login", "senha", "nome", "email", "numero", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "Ricardo"], ["senha", "Ricardo"], ["nome", "Ricardo"], ["email", "Ricardo"], ["numero", "998989898"], ["status", "t"], ["created_at", "2016-05-17 00:39:13.463335"], ["updated_at", "2016-05-17 00:39:13.463335"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/usuarios/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+Started GET "/usuarios/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by UsuariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered usuarios/show.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+Started GET "/posicionamentos/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#new as HTML
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  Rendered posicionamentos/_form.html.haml (6.4ms)
+  Rendered posicionamentos/new.html.haml within layouts/application (6.9ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.2ms)
+Started POST "/posicionamentos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#create as HTML
+  Parameters: {"utf8"=>"✓", "posicionamento"=>{"posicao"=>"101010", "data"=>"10/10/2016", "horario"=>"10:10", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posicionamentos" ("posicao", "data", "horario", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["posicao", "101010"], ["data", "10/10/2016"], ["horario", "10:10"], ["usuario_id", 1], ["created_at", "2016-05-17 00:39:13.537228"], ["updated_at", "2016-05-17 00:39:13.537228"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posicionamentos/1
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+Started GET "/posicionamentos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by PosicionamentosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPosicionamento Load (0.3ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posicionamentos/show.html.haml within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+Started GET "/favoritos/new" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#new as HTML
+  [1m[35mPosicionamento Load (0.2ms)[0m  SELECT "posicionamentos".* FROM "posicionamentos"
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  Rendered favoritos/_form.html.haml (7.4ms)
+  Rendered favoritos/new.html.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.4ms)
+Started POST "/favoritos" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#create as HTML
+  Parameters: {"utf8"=>"✓", "favorito"=>{"nomeLocal"=>"IFF", "posicionamento_id"=>"1", "usuario_id"=>"1"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "favoritos" ("nomeLocal", "posicionamento_id", "usuario_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["nomeLocal", "IFF"], ["posicionamento_id", 1], ["usuario_id", 1], ["created_at", "2016-05-17 00:39:13.583544"], ["updated_at", "2016-05-17 00:39:13.583544"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/favoritos/1
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+Started GET "/favoritos/1" for 127.0.0.1 at 2016-05-16 21:39:13 -0300
+Processing by FavoritosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFavorito Load (0.1ms)[0m  [1mSELECT  "favoritos".* FROM "favoritos" WHERE "favoritos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPosicionamento Load (0.1ms)[0m  SELECT  "posicionamentos".* FROM "posicionamentos" WHERE "posicionamentos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios" WHERE "usuarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered favoritos/show.html.haml within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.4ms)[0m  rollback transaction

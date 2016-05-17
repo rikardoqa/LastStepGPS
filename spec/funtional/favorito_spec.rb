@@ -59,10 +59,10 @@ feature 'Favorito' do
 	end
 
 	def preencher_verificar_favorito
-		fill_in 'Nomelocal', :with => 'IFF'
+		fill_in 'Local', :with => 'IFF'
 		select "101010", from: 'Posicionamento'
 		select "Ricardo", from: 'Usuario'
 		click_button 'Salvar'
-		expect(page).to have_content 'Nomelocal: IFF'
+		expect(page).to have_content 'Local: IFF'
 	end
 end		
